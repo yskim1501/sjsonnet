@@ -6,6 +6,7 @@ class SjsonnetModule(val crossScalaVersion: String) extends Module {
   def millSourcePath = super.millSourcePath / ammonite.ops.up
   trait SjsonnetCrossModule extends CrossScalaModule with PublishModule{
 
+    def ammoniteVersion = "2.0.4"
     def artifactName = "sjsonnet"
     def platformSegment: String
     def sources = T.sources(
