@@ -22,7 +22,7 @@ object Materializer {
       case Val.False => visitor.visitFalse(-1)
       case Val.Null => visitor.visitNull(-1)
       case Val.Num(n) => visitor.visitFloat64(n, -1)
-      case Val.Str(s) => visitor.visitString(s, -1)
+      case Val.Str(s) => visitor.visitString(s + " // annotated", -1)
       case Val.Arr(xs) =>
         val arrVisitor = visitor.visitArray(xs.length, -1)
         for(x <- xs) {

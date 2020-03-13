@@ -11,6 +11,7 @@ import scala.collection.{BitSet, mutable}
   */
 sealed trait Expr{
   def offset: Int
+
 }
 object Expr{
   case class Null(offset: Int) extends Expr

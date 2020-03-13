@@ -19,7 +19,8 @@ import scala.collection.mutable
 class Evaluator(parseCache: collection.mutable.Map[String, fastparse.Parsed[(Expr, Map[String, Int])]],
                 val extVars: Map[String, ujson.Value],
                 val wd: Path,
-                importer: (Path, String) => Option[(Path, String)]) extends EvalScope{
+                importer: (Path, String) => Option[(Path, String)],
+                annotate: Boolean = false) extends EvalScope{
   implicit def evalScope: EvalScope = this
 
   val loadedFileContents = mutable.Map.empty[Path, String]

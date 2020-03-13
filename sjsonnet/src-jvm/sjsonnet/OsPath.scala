@@ -1,7 +1,6 @@
 package sjsonnet
 
-case class OsPath(p: os.Path) extends Path{
-  def relativeToString(other: Path): String = p.relativeTo(other.asInstanceOf[OsPath].p).toString
+case class OsPath(p: os.Path) extends Path{ def relativeToString(other: Path): String = p.relativeTo(other.asInstanceOf[OsPath].p).toString
   def parent(): OsPath = OsPath(p / os.up)
   def segmentCount() = p.segmentCount
   def debugRead(): Option[String] = try Some(os.read(p)) catch{case e: Throwable => None}

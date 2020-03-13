@@ -7,6 +7,8 @@ import scala.annotation.tailrec
 import scala.collection.mutable
 import scala.reflect.ClassTag
 
+class ValAnnotation(filePath: Option[Path] = None) { }
+
 /**
   * [[Val]]s represented Jsonnet values that are the result of evaluating
   * a Jsonnet program. The [[Val]] data structure is essentially a JSON tree,
@@ -20,6 +22,7 @@ sealed trait Val{
     else throw new Error.Delegate(
       "Expected " + implicitly[PrettyNamed[T]].s + ", found " + prettyName
     )
+  def annotation: ValAnnotation = new ValAnnotation()
 }
 class PrettyNamed[T](val s: String)
 object PrettyNamed{
